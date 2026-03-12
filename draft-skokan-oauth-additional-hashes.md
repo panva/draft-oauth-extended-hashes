@@ -427,12 +427,58 @@ Specification Document(s):
 ## DPoP Authorization Code Binding Methods Registry {#dpop-binding-registry}
 
 This document establishes the "DPoP Authorization Code Binding
-Methods" registry for `dpop_jkt_method` values.
+Methods" registry for `dpop_jkt_method` values as a sub-registry
+of the "OAuth Parameters" registry
+(https://www.iana.org/assignments/oauth-parameters/).
 
-New entries are registered using the Specification Required policy
-{{!RFC5226}}.
+Additional `dpop_jkt_method` values are registered using the
+Specification Required policy {{!RFC8126}}, which includes review
+of the request by one or more Designated Experts (DEs). The DEs
+will ensure that there is at least a two-week review of the
+request on the oauth-ext-review@ietf.org mailing list and that
+any discussion on that list converges before they respond to
+the request. To allow for the allocation of values prior to
+publication, the Designated Expert(s) may approve registration
+once they are satisfied that an acceptable specification will
+be published.
 
-The initial contents of the registry are:
+Registration requests and discussion on the
+oauth-ext-review@ietf.org mailing list should use an appropriate
+subject, such as "Request for DPoP authorization code binding
+method: example".
+
+The Designated Expert(s) should consider the discussion on the
+mailing list, as well as the overall security properties of
+the method when evaluating registration requests. New methods
+must define a cryptographically sound one-way transformation
+suitable for use in authorization code binding and must not
+duplicate the functionality of any existing registered method.
+The specification document must clearly describe the computation,
+verification, and any associated metadata negotiation. Denials
+should include an explanation and, if applicable, suggestions as
+to how to make the request successful.
+
+### Registration Template {#dpop-binding-registry-template}
+
+Method Name:
+: The name requested (e.g., "example"). This name is
+  case-sensitive. Names may not match other registered names
+  in a case-insensitive manner unless the Designated Expert(s)
+  states that there is a compelling reason to allow an exception
+  in this particular case.
+
+Change Controller:
+: For Standards Track RFCs, state "IETF". For others, give the
+  name of the responsible party. Other details (e.g., postal
+  address, email address, and home page URI) may also be included.
+
+Specification Document(s):
+: Reference to the document(s) that specifies the method,
+  preferably including URI(s) that can be used to retrieve copies
+  of the document(s). An indication of the relevant sections may
+  also be included but is not required.
+
+### Initial Registry Contents {#dpop-binding-registry-contents}
 
 Method Name:
 : `S256`

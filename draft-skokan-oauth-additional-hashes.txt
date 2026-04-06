@@ -134,6 +134,12 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
+   The key words "BASE64URL-ENCODE", "ASCII", and "OCTETS" in this
+   document are to be interpreted as described in Section 2 of
+   [RFC7636].
+
+   SHA-512(OCTETS) denotes a SHA2 512-bit hash [RFC6234] of OCTETS.
+
    All references to "CNSA 2.0" in this document refer to CNSA 2.0
    [cnsafaq], unless stated otherwise.
 
@@ -171,7 +177,8 @@ Table of Contents
    [RFC7636].  The client creates a code challenge derived from the code
    verifier by using the following transformation on the code verifier:
 
-   S512:  code_challenge = BASE64URL(SHA-512(ASCII(code_verifier)))
+   S512:  code_challenge = BASE64URL-ENCODE(SHA-
+      512(ASCII(code_verifier)))
 
    The server-side verification of the code verifier follows Section 4.6
    of [RFC7636], using SHA-512 as the hash algorithm.
@@ -610,6 +617,11 @@ Table of Contents
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC6234]  Eastlake 3rd, D. and T. Hansen, "US Secure Hash Algorithms
+              (SHA and SHA-based HMAC and HKDF)", RFC 6234,
+              DOI 10.17487/RFC6234, May 2011,
+              <https://www.rfc-editor.org/rfc/rfc6234>.
 
    [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
               RFC 6749, DOI 10.17487/RFC6749, October 2012,

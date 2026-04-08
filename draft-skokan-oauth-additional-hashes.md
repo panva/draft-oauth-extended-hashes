@@ -353,13 +353,11 @@ Resource Server supports, analogous to the `algs` parameter defined
 in {{Section 7.1 of RFC9449}}. A Resource Server that does not
 support `ath` MUST include the `ath_methods` parameter in any
 `WWW-Authenticate: DPoP` challenge it issues. When `ath_methods`
-is absent and the Client has not obtained the Resource Server's
+is absent: if the Client is aware of the Resource Server's
 `dpop_access_token_hash_methods_supported` metadata, the Client
-MUST use `ath`. When `ath_methods` is absent but the Client has
-previously obtained the Resource Server's metadata, the Client
-MUST use a method from
-`dpop_access_token_hash_methods_supported`. When `ath_methods` is
-present, the Client MUST use one of the listed methods.
+MUST use a method from that set; otherwise, the Client MUST use
+`ath`. When `ath_methods` is present, the Client MUST use one of
+the listed methods.
 Additionally, Resource Server metadata for the supported access
 token hash methods is defined in {{dpop-rs-metadata}}.
 

@@ -357,11 +357,16 @@ methods by including the `ath_methods` parameter in the
 `WWW-Authenticate: DPoP` challenge. The value of `ath_methods` is a
 space-delimited list of access token hash claim names that the
 Resource Server supports, analogous to the `algs` parameter defined
-in {{Section 7.1 of RFC9449}}. When `ath_methods` is absent, the
-Client MUST use `ath`. When `ath_methods` is present, the Client
-MUST use one of the listed methods. Additionally, Resource Server
-metadata for the supported access token hash methods is defined in
-{{dpop-rs-metadata}}.
+in {{Section 7.1 of RFC9449}}. A Resource Server that does not
+support `ath` MUST include the `ath_methods` parameter in any
+`WWW-Authenticate: DPoP` challenge it issues. When `ath_methods`
+is absent: if the Client is aware of the Resource Server's
+`dpop_access_token_hash_methods_supported` metadata, the Client
+MUST use a method from that set; otherwise, the Client MUST use
+`ath`. When `ath_methods` is present, the Client MUST use one of
+the listed methods.
+Additionally, Resource Server metadata for the supported access
+token hash methods is defined in {{dpop-rs-metadata}}.
 
 The following is a non-normative example of an HTTP response
 signalling the client to use `ath#S512`:

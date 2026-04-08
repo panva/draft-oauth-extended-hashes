@@ -4,8 +4,8 @@
 
 Web Authorization Protocol                                     F. Skokan
 Internet-Draft                                                      Okta
-Intended status: Standards Track                           19 March 2026
-Expires: 20 September 2026
+Intended status: Standards Track                            8 April 2026
+Expires: 10 October 2026
 
 
  Additional Hash Algorithms for OAuth 2.0 PKCE and Proof-of-Possession
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 September 2026.
+   This Internet-Draft will expire on 10 October 2026.
 
 Copyright Notice
 
@@ -365,15 +365,12 @@ Table of Contents
    analogous to the algs parameter defined in Section 7.1 of [RFC9449].
    A Resource Server that does not support ath MUST include the
    ath_methods parameter in any WWW-Authenticate: DPoP challenge it
-   issues.  When ath_methods is absent and the Client has not obtained
-   the Resource Server's dpop_access_token_hash_methods_supported
-   metadata, the Client MUST use ath.  When ath_methods is absent but
-   the Client has previously obtained the Resource Server's metadata,
-   the Client MUST use a method from
-   dpop_access_token_hash_methods_supported.  When ath_methods is
-   present, the Client MUST use one of the listed methods.
-   Additionally, Resource Server metadata for the supported access token
-   hash methods is defined in Section 6.2.3.
+   issues.  When ath_methods is absent: if the Client is aware of the
+   Resource Server's dpop_access_token_hash_methods_supported metadata,
+   the Client MUST use a method from that set; otherwise, the Client
+   MUST use ath.  When ath_methods is present, the Client MUST use one
+   of the listed methods.  Additionally, Resource Server metadata for
+   the supported access token hash methods is defined in Section 6.2.3.
 
    The following is a non-normative example of an HTTP response
    signalling the client to use ath#S512:
